@@ -1,0 +1,87 @@
+const { BrandMark, Eyebrow, Frame, Tick } = window.STMStudioDesignSystem_5c3910;
+
+/* Direction B — Daylight editorial. The alternate the studio was shown
+   alongside the shipped night direction: warm paper, gold accent, wide
+   tracking, 90px gutters, no corner brackets on frames. */
+function DirectionB() {
+  const C = window.STM_COPY;
+  const P = '../../assets/photos/';
+  const mono = { fontFamily: 'var(--stm-font-mono)', fontSize: 11.5, letterSpacing: '0.18em', textTransform: 'uppercase' };
+  return (
+    <div className="stm-daylight" style={{ width: 1440, margin: '0 auto', background: 'var(--stm-day-paper)', color: 'var(--stm-day-ink)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '30px 90px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
+          <BrandMark size={40} inverted lockup="mark" />
+          <span style={{ ...mono, letterSpacing: '0.26em' }}>STM Studio</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 40 }}>
+          <a style={mono} href="#b-work">Work</a>
+          <a style={mono} href="#b-studio">Services</a>
+          <a style={mono} href="#b-studio">Studio</a>
+          <span style={{ ...mono, color: 'var(--stm-day-muted)' }}>EN / ع</span>
+          <a href={C.wa} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 11.5, letterSpacing: '0.16em', border: '1px solid var(--stm-day-ink)', padding: '12px 22px' }}>Start a project</a>
+        </div>
+      </div>
+
+      <div style={{ padding: '70px 90px 0' }}>
+        <div style={{ display: 'flex', gap: 60, alignItems: 'flex-start' }}>
+          <div style={{ width: 250, flexShrink: 0, paddingTop: 16 }}>
+            <Tick daylight width={56} style={{ marginBottom: 22 }} />
+            <Eyebrow size="sm" color="var(--stm-day-muted)" style={{ display: 'block', lineHeight: 2.1 }}>Cairo<br />Egypt<br />Since 2024</Eyebrow>
+          </div>
+          <div style={{ flexGrow: 1 }}>
+            <h1 style={{ fontFamily: 'var(--stm-font-display)', fontSize: 92, lineHeight: 1, fontWeight: 600, letterSpacing: '-0.03em', margin: 0, maxWidth: 940 }}>We turn ideas into reality.</h1>
+            <div style={{ display: 'flex', gap: 60, marginTop: 40, alignItems: 'flex-start' }}>
+              <p style={{ fontFamily: 'var(--stm-font-body)', fontSize: 18, lineHeight: 1.7, color: 'var(--stm-day-body)', maxWidth: 480, margin: 0 }}>
+                A full-service production house in Cairo — commercials, brand films, product photography and event coverage, with the whole unit built and run in-house.
+              </p>
+              <a href={C.wa} target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 12, borderBottom: '1px solid var(--stm-day-ink)', paddingBottom: 9 }}>WhatsApp 010 9580 2959 →</a>
+            </div>
+          </div>
+        </div>
+        <Frame daylight brackets={false} style={{ marginTop: 60 }} height={540} label="Showreel — 16:9" note="supply video or link" />
+      </div>
+
+      <div id="b-work" style={{ padding: '80px 90px 0' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 26, marginBottom: 34 }}>
+          <Eyebrow size="sm" color="var(--stm-day-muted)">Selected work</Eyebrow>
+          <span style={{ flexGrow: 1, height: 1, background: 'var(--stm-day-line-18)' }} />
+          <Eyebrow size="sm" color="var(--stm-day-muted)">2024 — 2026</Eyebrow>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 34 }}>
+          {C.work.slice(0, 3).map((w) => (
+            <div key={w.frame} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <Frame daylight brackets={false} height={260} label={w.credits[0].value} />
+              <div>
+                <div style={{ fontFamily: 'var(--stm-font-display)', fontSize: 22, fontWeight: 600, letterSpacing: '-0.015em' }}>{w.credits[0].value}</div>
+                <div style={{ ...mono, fontSize: 11, letterSpacing: '0.14em', color: 'var(--stm-day-muted)', marginTop: 8, lineHeight: 1.9 }}>
+                  {w.credits[1].value}<br /><span style={{ color: 'var(--stm-gold-ink)' }}>{w.credits[2].value}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div id="b-studio" style={{ marginTop: 90, background: 'var(--stm-ink)', color: 'var(--stm-day-paper)', padding: '76px 90px' }}>
+        <div style={{ display: 'flex', gap: 70, alignItems: 'center' }}>
+          <img src={P + 'set-living-warm.jpg'} alt="Warm living set" style={{ width: 620, height: 400, objectFit: 'cover', display: 'block' }} />
+          <div>
+            <Tick daylight width={56} style={{ marginBottom: 24 }} />
+            <h2 style={{ fontFamily: 'var(--stm-font-display)', fontSize: 48, lineHeight: 1.05, fontWeight: 600, letterSpacing: '-0.025em', margin: '0 0 22px 0' }}>Our own studio,<br />our own sets.</h2>
+            <p style={{ fontFamily: 'var(--stm-font-body)', fontSize: 17, lineHeight: 1.75, color: 'var(--stm-grey-3)', maxWidth: 480, margin: '0 0 30px 0' }}>
+              A 5.5 × 4 m skylight cyclorama plus a rotating set of dressed interiors — living rooms, a podcast set, kitchen, bedroom and office. Less location hunting, fewer permits, a shorter schedule.
+            </p>
+            <a href="https://www.instagram.com/stmstudiorent/" target="_blank" rel="noopener noreferrer" style={{ ...mono, fontSize: 12, color: 'var(--stm-gold)', borderBottom: '1px solid var(--stm-gold)', paddingBottom: 8 }}>See the space — @stmstudiorent →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: '34px 90px 44px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span style={{ ...mono, fontSize: 11, letterSpacing: '0.16em', color: 'var(--stm-day-muted)' }}>Direction B — Daylight editorial</span>
+        <span style={{ ...mono, fontSize: 11, letterSpacing: '0.16em', color: 'var(--stm-day-muted)' }}>Warm paper · gold accent · wide tracking</span>
+      </div>
+    </div>
+  );
+}
+Object.assign(window, { DirectionB });

@@ -1,0 +1,47 @@
+const { NavBar, SectionHead, ContactRow, Input, Button, Rule, Footer } = window.STMStudioDesignSystem_5c3910;
+
+function Contact({ lang = 'en', onLang }) {
+  const [sent, setSent] = React.useState(false);
+  return (
+    <div style={{ width: 1440, margin: '0 auto', background: 'var(--stm-ink)', color: 'var(--stm-paper)', fontFamily: 'var(--stm-font-body)' }}>
+      <NavBar lang={lang} onLang={onLang} links={[{ label: 'Work' }, { label: 'Services' }, { label: 'The Unit' }, { label: 'Studio' }]} />
+      <div style={{ padding: '96px 100px 0', display: 'flex', gap: 90 }}>
+        <div style={{ flexGrow: 1, maxWidth: 640 }}>
+          <SectionHead eyebrow="Contact" title={<>Tell us what<br />you're shooting.</>} />
+          <p style={{ fontSize: 18, lineHeight: 1.7, color: 'var(--stm-grey-3)', margin: '26px 0 40px 0' }}>
+            Send the brief, the deadline and the budget range. You'll get a producer, a treatment direction and a quote — not a form reply.
+          </p>
+          {sent ? (
+            <p style={{ fontFamily: 'var(--stm-font-mono)', fontSize: 13, letterSpacing: '0.08em', color: 'var(--stm-red)' }}>Brief received — a producer will follow up on WhatsApp or email.</p>
+          ) : (
+            <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
+              <Input label="Project name" placeholder="e.g. KION — summer campaign" />
+              <div style={{ display: 'flex', gap: 26 }}>
+                <Input label="Deadline" placeholder="e.g. 3 weeks" style={{ flex: 1 }} />
+                <Input label="Budget range (EGP)" placeholder="e.g. 150,000 – 300,000" style={{ flex: 1 }} />
+              </div>
+              <Input label="Brief" placeholder="What are we shooting, and for whom?" multiline rows={5} />
+              <Button variant="primary" size="lg" style={{ alignSelf: 'flex-start', marginTop: 10 }}>Send the brief</Button>
+            </form>
+          )}
+        </div>
+        <div style={{ width: 340, flexShrink: 0, display: 'flex', flexDirection: 'column' }}>
+          <ContactRow label="Phone" value="+20 10 9580 2959" href="tel:+201095802959" />
+          <ContactRow label="Email" value="stmstudio3@gmail.com" href="mailto:stmstudio3@gmail.com?subject=Production%20brief" />
+          <ContactRow label="Studio" value="[ STUDIO ADDRESS ]" placeholder />
+          <ContactRow label="Follow">
+            <div style={{ display: 'flex', gap: 18 }}>
+              {[['Instagram','https://www.instagram.com/stmstudioeg/'],['TikTok','https://www.tiktok.com/@stmstudioeg'],
+                ['LinkedIn','https://www.linkedin.com/company/stmstudioeg/'],['Facebook','https://www.facebook.com/stmstudioeg/']].map(([n,h]) => (
+                <a key={n} href={h} target="_blank" rel="noopener noreferrer" style={{ fontSize: 15 }}>{n}</a>
+              ))}
+            </div>
+          </ContactRow>
+          <Rule />
+        </div>
+      </div>
+      <Footer style={{ marginTop: 96 }} />
+    </div>
+  );
+}
+Object.assign(window, { Contact });

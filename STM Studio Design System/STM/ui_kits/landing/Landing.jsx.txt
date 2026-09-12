@@ -1,0 +1,167 @@
+const { NavBar, SectionHead, RuleRow, ClientStrip, SpecStrip, Footer,
+        Button, Frame, Rule, Eyebrow, WorkCard, ServiceRow, UnitColumn, ContactRow } = window.STMStudioDesignSystem_5c3910;
+
+function Landing({ lang = 'en', onLang }) {
+  const ar = lang === 'ar';
+  const C = window.STM_COPY;
+  const G = { padding: '0 100px' };
+  const P = '../../assets/photos/';
+  const t = (en, arv) => (ar ? arv : en);
+
+  return (
+    <div dir={ar ? 'rtl' : 'ltr'} style={{
+      width: 1440, margin: '0 auto', background: 'var(--stm-ink)', color: 'var(--stm-paper)',
+      fontFamily: ar ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)'
+    }}>
+      <NavBar lang={lang} onLang={onLang} arabic={ar} ctaHref={ar ? C.waAr : C.wa}
+        cta={t('Start a project', 'ابدأ مشروعك')}
+        links={ar
+          ? [{label:'أعمالنا',href:'#work'},{label:'خدماتنا',href:'#services'},{label:'الفريق',href:'#unit'},{label:'الاستوديو',href:'#studio'}]
+          : [{label:'Work',href:'#work'},{label:'Services',href:'#services'},{label:'The Unit',href:'#unit'},{label:'Studio',href:'#studio'}]} />
+
+      {/* HERO */}
+      <div style={{ ...G, paddingTop: 96 }}>
+        <RuleRow arabic={ar} left={t('Cairo, Egypt', 'القاهرة، مصر')} right={t('Est. Full-service production', 'إنتاج متكامل')} />
+        <h1 style={{
+          fontFamily: ar ? 'var(--stm-font-arabic)' : 'var(--stm-font-display)',
+          fontSize: ar ? 96 : 104, lineHeight: ar ? 1.16 : 0.94, fontWeight: 700,
+          letterSpacing: ar ? 0 : '-0.035em', margin: ar ? '36px 0 0 0' : '40px 0 0 0', maxWidth: ar ? 1150 : 1130
+        }}>
+          {ar
+            ? <>نحوّل الأفكار<br />إلى <span style={{ color: 'var(--stm-red)' }}>واقع.</span></>
+            : <>We turn ideas<br />into <span style={{ color: 'var(--stm-red)' }}>reality.</span></>}
+        </h1>
+        <div style={{ display: 'flex', gap: 80, marginTop: ar ? 40 : 44, alignItems: 'flex-end' }}>
+          <p style={{ fontSize: 19, lineHeight: ar ? 1.9 : 1.65, color: 'var(--stm-grey-2)', maxWidth: ar ? 600 : 560, margin: 0 }}>
+            {t('A full-service production house in Cairo. We build and run the whole unit — direction, camera, art, casting, post — for commercials, brand films and product work with agencies and brands across Egypt.',
+               'شركة إنتاج متكاملة في القاهرة. نجهّز فريق العمل بالكامل وندير التصوير من أوله لآخره — إخراج، تصوير، ديكور، كاستينج، ومونتاج — للإعلانات وأفلام العلامات وتصوير المنتجات.')}
+          </p>
+          <div style={{ display: 'flex', gap: 14, flexGrow: 1, justifyContent: 'flex-end' }}>
+            <Button variant="primary" size="md" icon="whatsapp" href={ar ? C.waAr : C.wa}
+              style={{ whiteSpace: 'nowrap' }}>{t('Start a project on WhatsApp', 'ابدأ مشروعك على واتساب')}</Button>
+            <Button variant="outline" size="md" iconAfter={ar ? undefined : 'arrowRight'} href="#work"
+              style={{ whiteSpace: 'nowrap' }}>{t('See the work', 'شاهد أعمالنا')}</Button>
+          </div>
+        </div>
+        <Frame style={{ marginTop: ar ? 60 : 64 }} height={620} badge="REEL 2026"
+          label={t('Showreel — 16:9', 'شوريل الأعمال — 16:9')}
+          note={t('supply MP4 or Vimeo / YouTube link', 'يُرفع ملف الفيديو أو رابط يوتيوب / فيميو')} />
+      </div>
+
+      {/* CLIENTS */}
+      <div style={{ ...G, paddingTop: 56 }}>
+        <RuleRow arabic={ar} style={{ marginBottom: 30 }} left={t('Trusted by brands & agencies', 'علامات ووكالات عملنا معها')} />
+        <ClientStrip clients={ar ? C.clientsAr : C.clients}
+          note={t('[ set as wordmarks — replace with client logo files when cleared ]', '[ مكتوبة كنصوص مؤقتة — تُستبدل بملفات شعارات العملاء بعد الموافقة ]')} />
+      </div>
+
+      {/* WORK */}
+      <div id="work" style={{ ...G, paddingTop: 110 }}>
+        <SectionHead arabic={ar} eyebrow={t('01 — Selected work', '01 — أعمال مختارة')}
+          title={t('On the credits.', 'اسمنا في التترات.')}
+          aside={t('Every job below carries our name in the credits — as production house, digital unit or studio. Each card opens the original post.',
+                   'كل عمل هنا يحمل اسمنا في تترات النهاية — كشركة إنتاج، أو وحدة ديجيتال، أو استوديو. اضغط على أي عمل لفتح المنشور الأصلي.')} />
+        <Rule style={{ marginTop: 40 }} />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '40px 32px', marginTop: 40 }}>
+          {C.work.map((w) => (
+            <WorkCard key={w.frame} href={w.href} arabic={ar}
+              frameLabel={ar ? w.frameAr : w.frame}
+              frameNote={t('still to supply', 'في انتظار الصورة')}
+              credits={ar ? w.creditsAr : w.credits} />
+          ))}
+        </div>
+        <Button variant="outline" size="md" href="https://www.instagram.com/stmstudioeg/"
+          iconAfter="arrowUpRight" style={{ marginTop: 44, height: 58, padding: 0 }}>
+          {t('See all work on Instagram', 'كل الأعمال على إنستجرام')}
+        </Button>
+      </div>
+
+      {/* SERVICES */}
+      <div id="services" style={{ ...G, paddingTop: 120 }}>
+        <SectionHead arabic={ar} eyebrow={t('02 — What we do', '02 — ما نقدّمه')}
+          title={t('Five things, done properly.', 'خمس خدمات، بإتقان.')} style={{ marginBottom: 48 }} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Rule />
+          {C.services.map((s) => (
+            <React.Fragment key={s.n}>
+              <ServiceRow number={s.n} arabic={ar} title={ar ? s.tAr : s.t}>{ar ? s.dAr : s.d}</ServiceRow>
+              <Rule />
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      {/* THE UNIT */}
+      <div id="unit" style={{ marginTop: 120, background: 'var(--stm-ink-band)', padding: '90px 100px' }}>
+        <div style={{ display: 'flex', gap: 90, alignItems: 'flex-start' }}>
+          <div style={{ width: 460, flexShrink: 0 }}>
+            <SectionHead arabic={ar} size="band" eyebrow={t('03 — How we work', '03 — طريقة عملنا')}
+              title={ar ? <>جهة اتصال واحدة.<br />فريق كامل.</> : <>One contact.<br />The whole unit.</>} />
+            <p style={{ fontSize: 17, lineHeight: ar ? 1.95 : 1.7, color: 'var(--stm-grey-3)', margin: '24px 0 0 0' }}>
+              {t('A commercial is thirty people doing one thing at the same time. You brief a producer; we handle the rest of that list.',
+                 'الإعلان الواحد يحتاج ثلاثين شخصاً يشتغلون في نفس اللحظة. أنت تتكلم مع منتج واحد، وإحنا نتولّى باقي القائمة.')}
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 40, flexGrow: 1 }}>
+            {C.unit.map((u) => (
+              <UnitColumn key={u.t} arabic={ar} title={ar ? u.tAr : u.t} items={ar ? u.itemsAr : u.items} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* STUDIO */}
+      <div id="studio" style={{ ...G, paddingTop: 110 }}>
+        <SectionHead arabic={ar} eyebrow={t('04 — The space', '04 — المكان')}
+          title={t('We shoot in our own studio.', 'نصوّر في استوديو نملكه.')}
+          aside={t('A skylight cyclorama and a set of dressed interiors — which means less location hunting, fewer permits and a shorter schedule. Available to rent on its own, too.',
+                   'سيكلوراما بإضاءة سماوية ومجموعة ديكورات جاهزة — يعني بحث أقل عن لوكيشن، تصاريح أقل، وجدول أقصر. ومتاح للإيجار بشكل منفصل.')} />
+        <div style={{ display: 'grid', gridTemplateColumns: '1.55fr 1fr', gap: 22, marginTop: 44 }}>
+          <Frame height={520} src={P + 'studio-cyclorama.jpg'} alt="Skylight cyclorama" />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+            <Frame height={249} src={P + 'set-podcast.jpg'} alt="Podcast set" />
+            <Frame height={249} src={P + 'set-blue-interior.jpg'} alt="Dressed interior set" />
+          </div>
+        </div>
+        <SpecStrip style={{ marginTop: 28 }} specs={C.specs.map((s) => ({ value: s.value, label: ar ? s.labelAr : s.label }))} />
+      </div>
+
+      {/* CONTACT */}
+      <div style={{ marginTop: 120, padding: '96px 100px', borderTop: '1px solid var(--stm-line-14)' }}>
+        <div style={{ display: 'flex', gap: 90, alignItems: 'flex-start' }}>
+          <div style={{ flexGrow: 1 }}>
+            <SectionHead arabic={ar} size="lg" eyebrow={t('05 — Next step', '05 — الخطوة التالية')}
+              title={ar ? <>احكِ لنا<br />عن مشروعك.</> : <>Tell us what<br />you’re shooting.</>} />
+            <p style={{ fontSize: 18, lineHeight: ar ? 1.95 : 1.7, color: 'var(--stm-grey-3)', maxWidth: ar ? 540 : 520, margin: '26px 0 40px 0' }}>
+              {t('Send the brief, the deadline and the budget range. You’ll get a producer, a treatment direction and a quote — not a form reply.',
+                 'ابعت البريف والديدلاين والميزانية التقريبية. هيردّ عليك منتج بتصوّر مبدئي وعرض سعر — مش رسالة تلقائية.')}
+            </p>
+            <div style={{ display: 'flex', gap: 14 }}>
+              <Button variant="primary" size="lg" icon="whatsapp" href={ar ? C.waAr : C.wa}>{t('WhatsApp 010 9580 2959', 'واتساب 010 9580 2959')}</Button>
+              <Button variant="outline" size="lg" href="mailto:stmstudio3@gmail.com?subject=Production%20brief">{t('Email a brief', 'ابعت بريف بالبريد')}</Button>
+            </div>
+          </div>
+          <div style={{ width: 360, flexShrink: 0, display: 'flex', flexDirection: 'column' }}>
+            <ContactRow arabic={ar} label={t('Phone', 'الهاتف')} value="+20 10 9580 2959" href="tel:+201095802959" />
+            <ContactRow arabic={ar} label={t('Email', 'البريد')} value="stmstudio3@gmail.com" href="mailto:stmstudio3@gmail.com?subject=Production%20brief" />
+            <ContactRow arabic={ar} label={t('Studio', 'العنوان')} value={t('[ STUDIO ADDRESS ]', '[ عنوان الاستوديو ]')} placeholder />
+            <ContactRow arabic={ar} label={t('Follow', 'تابعنا')}>
+              <div style={{ display: 'flex', gap: 18 }}>
+                {[['Instagram','https://www.instagram.com/stmstudioeg/'],['TikTok','https://www.tiktok.com/@stmstudioeg'],
+                  ['LinkedIn','https://www.linkedin.com/company/stmstudioeg/'],['Facebook','https://www.facebook.com/stmstudioeg/']].map(([n,h]) => (
+                  <a key={n} href={h} target="_blank" rel="noopener noreferrer" style={{ fontSize: 15 }}>{n}</a>
+                ))}
+              </div>
+            </ContactRow>
+            <Rule />
+          </div>
+        </div>
+      </div>
+
+      <Footer arabic={ar}
+        left={t('© 2026 STM STUDIO — CAIRO, EGYPT', '© 2026 إس تي إم ستوديو — القاهرة، مصر')}
+        right={t('WE TURN IDEAS INTO REALITY', 'نحوّل الأفكار إلى واقع')} />
+    </div>
+  );
+}
+Object.assign(window, { Landing });

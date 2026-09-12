@@ -1,0 +1,19 @@
+const { BrandMark, Button, Eyebrow } = window.STMStudioDesignSystem_5c3910;
+
+function NotFound({ onHome }) {
+  return (
+    <div style={{
+      width: 1440, height: 760, margin: '0 auto', background: 'var(--stm-ink)', color: 'var(--stm-paper)',
+      fontFamily: 'var(--stm-font-body)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 28
+    }}>
+      <BrandMark size={48} lockup="mark" />
+      <Eyebrow>404 — Frame not found</Eyebrow>
+      <h1 style={{ fontFamily: 'var(--stm-font-display)', fontSize: 72, lineHeight: 0.98, fontWeight: 700, letterSpacing: '-0.035em', margin: 0 }}>
+        Cut. That page isn't <span style={{ color: 'var(--stm-red)' }}>on the reel.</span>
+      </h1>
+      <p style={{ fontSize: 17, color: 'var(--stm-grey-3)', margin: 0 }}>The page you're looking for was never in the shot list.</p>
+      <Button variant="primary" size="md" onClick={onHome} href="#">Back to the homepage</Button>
+    </div>
+  );
+}
+Object.assign(window, { NotFound });

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — STM Studio</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div class="stm-404">
+  <div class="stm-brand__disc" style="width:48px;height:48px;">
+    <span style="font-size:19px;">stm</span>
+  </div>
+  <span class="stm-eyebrow" id="stm-404-eyebrow">404 — Frame not found</span>
+  <h1 class="stm-404__title" id="stm-404-title">Cut. That page isn&rsquo;t <span class="stm-accent">on the reel.</span></h1>
+  <p class="stm-404__lede" id="stm-404-lede">The page you&rsquo;re looking for was never in the shot list.</p>
+  <a class="stm-btn stm-btn--primary" id="stm-404-home" href="/">Back to the homepage</a>
+</div>
+
+<script>
+  if (location.pathname.indexOf('/ar/') === 0 || location.pathname === '/ar') {
+    document.getElementById('html-root').lang = 'ar';
+    document.getElementById('html-root').dir = 'rtl';
+    document.getElementById('stm-404-eyebrow').textContent = '404 — اللقطة غير موجودة';
+    document.getElementById('stm-404-title').innerHTML = 'قطع. الصفحة دي مش <span class="stm-accent">في الريل.</span>';
+    document.getElementById('stm-404-lede').textContent = 'الصفحة اللي بتدوّر عليها ماكانتش في شيت التصوير من الأساس.';
+    var homeBtn = document.getElementById('stm-404-home');
+    homeBtn.href = '/ar/';
+    homeBtn.textContent = 'ارجع للصفحة الرئيسية';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+:root{
+  /* families */
+  --stm-font-display:Archivo,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --stm-font-body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --stm-font-mono:"IBM Plex Mono",ui-monospace,"Courier New",monospace;
+  --stm-font-arabic:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+
+  /* weights as used in source */
+  --stm-w-regular:400; /* @kind font */
+  --stm-w-medium:500; /* @kind font */
+  --stm-w-semibold:600; /* @kind font */
+  --stm-w-bold:700; /* @kind font */
+
+  /* ── Display scale, desktop 1440 (Archivo) ───────────── */
+  --stm-t-hero:104px;      --stm-lh-hero:0.94; /* @kind other */   --stm-ls-hero:-0.035em; /* @kind other */
+  --stm-t-h1:78px;         --stm-lh-h1:0.98; /* @kind other */     --stm-ls-h1:-0.035em; /* @kind other */
+  --stm-t-h2:60px;         --stm-lh-h2:1.02; /* @kind other */     --stm-ls-h2:-0.03em; /* @kind other */
+  --stm-t-h2-band:52px;    --stm-lh-h2-band:1.04; /* @kind other */
+  --stm-t-h3:30px;         --stm-ls-h3:-0.015em; /* @kind other */
+  --stm-t-h4:19px;
+  --stm-t-stat:26px;       --stm-ls-stat:-0.02em; /* @kind other */
+
+  /* ── Body scale (IBM Plex Sans Arabic) ───────────────── */
+  --stm-t-lede:19px;       --stm-lh-lede:1.65; /* @kind other */
+  --stm-t-body-lg:18px;    --stm-lh-body-lg:1.7; /* @kind other */
+  --stm-t-body:17px;
+  --stm-t-body-sm:16px;    --stm-lh-body-sm:1.6; /* @kind other */
+  --stm-t-ui:15px;
+  --stm-t-nav:14px;
+  --stm-t-list:14.5px;     --stm-lh-list:2.1; /* @kind other */
+  --stm-t-btn-sm:13.5px;
+
+  /* ── Mono / eyebrow scale (IBM Plex Mono) ────────────── */
+  --stm-t-eyebrow:12px;    --stm-ls-eyebrow:0.22em; /* @kind other */
+  --stm-t-meta:11px;       --stm-ls-meta:0.2em; /* @kind other */
+  --stm-t-meta-sm:10.5px;  --stm-ls-meta-sm:0.18em; /* @kind other */
+  --stm-t-meta-xs:10px;    --stm-ls-meta-xs:0.16em; /* @kind other */
+  --stm-t-kicker:9.5px;    --stm-ls-kicker:0.2em; /* @kind other */
+
+  /* ── Mobile 390 overrides ────────────────────────────── */
+  --stm-t-hero-m:46px;     --stm-lh-hero-m:0.98; /* @kind other */  --stm-ls-hero-m:-0.03em; /* @kind other */
+  --stm-t-h2-m:34px;       --stm-lh-h2-m:1.04; /* @kind other */    --stm-ls-h2-m:-0.025em; /* @kind other */
+  --stm-t-eyebrow-m:10.5px;--stm-ls-eyebrow-m:0.2em; /* @kind other */
+
+  /* ── Arabic overrides: no negative tracking, looser leading ── */
+  --stm-t-hero-ar:96px;    --stm-lh-hero-ar:1.16; /* @kind other */
+  --stm-t-h2-ar:56px;      --stm-lh-h2-ar:1.3; /* @kind other */
+  --stm-lh-body-ar:1.9; /* @kind other */
+  --stm-lh-body-lg-ar:1.95; /* @kind other */
+  --stm-ls-ar:0; /* @kind other */
+}

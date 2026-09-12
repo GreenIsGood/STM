@@ -1,0 +1,20 @@
+import React from 'react';
+
+export function SpecStrip({ specs = [], style }) {
+  return (
+    <div style={{
+      display: 'grid', gridTemplateColumns: `repeat(${specs.length}, minmax(0, 1fr))`,
+      borderTop: '1px solid var(--stm-line-14)', borderBottom: '1px solid var(--stm-line-14)', ...style
+    }}>
+      {specs.map((s, i) => (
+        <div key={s.label} style={{
+          padding: i === 0 ? '26px 16px 26px 0' : (i === specs.length - 1 ? '26px 0 26px 16px' : '26px 16px'),
+          borderRight: i === specs.length - 1 ? 'none' : '1px solid var(--stm-line-10)'
+        }}>
+          <div style={{ fontFamily: 'var(--stm-font-display)', fontSize: 26, fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--stm-paper)' }}>{s.value}</div>
+          <div style={{ fontFamily: 'var(--stm-font-mono)', fontSize: 10, letterSpacing: '0.18em', color: 'var(--stm-grey-7)', marginTop: 7, textTransform: 'uppercase' }}>{s.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+}

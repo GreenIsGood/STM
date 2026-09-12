@@ -1,0 +1,21 @@
+import React from 'react';
+
+export function CreditRow({ label, value, accent = false, mobile = false, arabic = false, style }) {
+  return (
+    <div style={{ display: 'flex', gap: mobile ? 12 : 14, ...style }}>
+      <span style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-mono)',
+        fontSize: arabic ? 12 : (mobile ? 9.5 : 10.5),
+        letterSpacing: arabic ? 0 : (mobile ? '0.16em' : '0.18em'),
+        textTransform: arabic ? 'none' : 'uppercase',
+        fontWeight: arabic ? 500 : 400,
+        color: 'var(--stm-grey-7)', width: mobile ? 62 : 78, flexShrink: 0, paddingTop: 3
+      }}>{label}</span>
+      <span style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+        fontSize: arabic ? 15 : 14, fontWeight: arabic ? 600 : 500,
+        color: accent ? 'var(--stm-red)' : 'var(--stm-paper-2)'
+      }}>{value}</span>
+    </div>
+  );
+}

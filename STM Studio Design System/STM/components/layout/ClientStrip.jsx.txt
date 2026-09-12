@@ -1,0 +1,27 @@
+import React from 'react';
+
+export function ClientStrip({ clients = [], columns = 7, note, mobile = false, style }) {
+  const cols = mobile ? 2 : columns;
+  return (
+    <div style={style}>
+      <div style={{
+        display: 'grid', gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+        borderTop: '1px solid var(--stm-line-12)', borderBottom: '1px solid var(--stm-line-12)'
+      }}>
+        {clients.map((c, i) => (
+          <div key={c} style={{
+            fontFamily: 'var(--stm-font-display)', padding: mobile ? '18px 4px' : '30px 8px',
+            textAlign: 'center', fontSize: mobile ? 15 : (c.length > 12 ? 15 : 17),
+            fontWeight: 600, color: 'var(--stm-grey-4)', letterSpacing: c.length > 12 ? '0.02em' : '0.04em',
+            borderRight: (i + 1) % cols === 0 ? 'none' : '1px solid var(--stm-line-10)',
+            borderBottom: mobile && i < clients.length - cols ? '1px solid var(--stm-line-10)' : 'none'
+          }}>{c}</div>
+        ))}
+      </div>
+      {note && <p style={{
+        fontFamily: 'var(--stm-font-mono)', fontSize: 10.5, letterSpacing: '0.14em',
+        color: 'var(--stm-grey-8)', margin: '12px 0 0 0', textTransform: 'uppercase'
+      }}>{note}</p>}
+    </div>
+  );
+}

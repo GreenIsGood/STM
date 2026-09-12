@@ -1,0 +1,12 @@
+import React from 'react';
+import { Eyebrow } from '../core/Eyebrow.jsx';
+
+export function RuleRow({ left, right, daylight = false, arabic = false, style }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 24, ...style }}>
+      <Eyebrow arabic={arabic} color={daylight ? 'var(--stm-day-muted)' : undefined}>{left}</Eyebrow>
+      <span style={{ flexGrow: 1, height: 1, marginTop: 8, background: daylight ? 'var(--stm-day-line-18)' : 'var(--stm-line-16)' }} />
+      {right && <Eyebrow arabic={arabic} color={daylight ? 'var(--stm-day-muted)' : undefined}>{right}</Eyebrow>}
+    </div>
+  );
+}

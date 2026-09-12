@@ -1,0 +1,29 @@
+import React from 'react';
+
+export function ServiceRow({ number, title, children, mobile = false, arabic = false, style }) {
+  if (mobile) {
+    return (
+      <div style={{ padding: '22px 0', ...style }}>
+        <div style={{ display: 'flex', gap: 14, alignItems: 'baseline' }}>
+          <span style={{ fontFamily: 'var(--stm-font-mono)', fontSize: 12, color: 'var(--stm-red)' }}>{number}</span>
+          <h3 style={{ fontFamily: 'var(--stm-font-display)', fontSize: 21, fontWeight: 600, letterSpacing: '-0.015em', color: 'var(--stm-paper)', margin: 0 }}>{title}</h3>
+        </div>
+        <p style={{ fontFamily: 'var(--stm-font-body)', fontSize: 15, lineHeight: 1.7, color: 'var(--stm-grey-3)', margin: '10px 0 0 26px' }}>{children}</p>
+      </div>
+    );
+  }
+  return (
+    <div style={{ display: 'flex', gap: 48, padding: '34px 0', alignItems: 'flex-start', ...style }}>
+      <span style={{ fontFamily: 'var(--stm-font-mono)', fontSize: 13, color: 'var(--stm-red)', width: 46, flexShrink: 0, paddingTop: 7 }}>{number}</span>
+      <h3 style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-display)',
+        fontSize: arabic ? 28 : 30, fontWeight: 600, letterSpacing: arabic ? 0 : '-0.015em',
+        color: 'var(--stm-paper)', margin: 0, width: 420, flexShrink: 0
+      }}>{title}</h3>
+      <p style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+        fontSize: 16, lineHeight: arabic ? 1.9 : 1.7, color: 'var(--stm-grey-3)', margin: 0, flexGrow: 1
+      }}>{children}</p>
+    </div>
+  );
+}

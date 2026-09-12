@@ -1,0 +1,23 @@
+import React from 'react';
+import { Frame } from '../core/Frame.jsx';
+import { CreditRow } from './CreditRow.jsx';
+
+export function WorkCard({
+  href = '#', frameLabel, frameNote = 'still to supply', src, credits = [],
+  height, mobile = false, arabic = false, style
+}) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="stm-workcard" style={{
+      display: 'flex', flexDirection: 'column', gap: mobile ? 14 : 18,
+      color: 'inherit', textDecoration: 'none', ...style
+    }}>
+      <Frame height={height ?? (mobile ? 190 : 240)} label={frameLabel} note={src ? undefined : frameNote}
+        src={src} alt={frameLabel} mobile={mobile} viewPost />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 7 : 9 }}>
+        {credits.map((c) => (
+          <CreditRow key={c.label} label={c.label} value={c.value} accent={c.accent} mobile={mobile} arabic={arabic} />
+        ))}
+      </div>
+    </a>
+  );
+}

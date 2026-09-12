@@ -1,0 +1,27 @@
+import React from 'react';
+import { Rule } from '../core/Rule.jsx';
+
+export function ContactRow({ label, value, href, placeholder = false, children, arabic = false, style }) {
+  const valueStyle = {
+    fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+    fontSize: 17, marginTop: 7, display: 'block', textDecoration: 'none',
+    color: placeholder ? 'var(--stm-grey-7)' : 'var(--stm-paper)',
+    transition: 'var(--stm-transition-color)'
+  };
+  return (
+    <div style={style}>
+      <Rule />
+      <div style={{ padding: '20px 0' }}>
+        <div style={{
+          fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-mono)',
+          fontSize: arabic ? 12 : 10.5, letterSpacing: arabic ? 0 : '0.18em',
+          textTransform: arabic ? 'none' : 'uppercase', fontWeight: arabic ? 500 : 400,
+          color: 'var(--stm-grey-7)'
+        }}>{label}</div>
+        {children
+          ? <div style={{ marginTop: 11 }}>{children}</div>
+          : (href ? <a className="stm-contact" href={href} style={valueStyle}>{value}</a> : <div style={valueStyle}>{value}</div>)}
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,16 @@
+import React from 'react';
+
+export function Rule({ weight = 'rule', vertical = false, daylight = false, style }) {
+  const colors = {
+    cell: daylight ? 'var(--stm-day-line-14)' : 'var(--stm-line-10)',
+    inset: daylight ? 'var(--stm-day-line-14)' : 'var(--stm-line-12)',
+    rule: daylight ? 'var(--stm-day-line-14)' : 'var(--stm-line-14)',
+    strong: daylight ? 'var(--stm-day-line-18)' : 'var(--stm-line-16)',
+    control: daylight ? 'var(--stm-day-line-18)' : 'var(--stm-line-28)'
+  };
+  return <hr style={{ border: 0, margin: 0, background: colors[weight], height: vertical ? '100%' : 1, width: vertical ? 1 : '100%', ...style }} />;
+}
+
+export function Tick({ daylight = false, width = 34, style }) {
+  return <div style={{ height: 2, width, background: daylight ? 'var(--stm-gold)' : 'var(--stm-red)', ...style }} />;
+}
