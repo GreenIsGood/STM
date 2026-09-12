@@ -6,3 +6,5 @@ a:hover{color:var(--stm-red)}
 .stm-daylight a{color:var(--stm-day-ink)}
 .stm-daylight a:hover{color:var(--stm-gold-ink)}
 *:focus-visible{outline:1px solid var(--stm-red);outline-offset:2px}
+.stm-input::placeholder{color:var(--stm-grey-7)}
+.stm-input:focus{border-bottom-color:var(--stm-red)}

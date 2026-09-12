@@ -1,0 +1,28 @@
+import React from 'react';
+
+/* Not present in the source mockups — added so brief/contact forms can be
+   built without breaking the square, hairline, no-shadow visual language.
+   See readme.md "Intentional additions". */
+export function Input({
+  label, placeholder, multiline = false, rows = 3, value, onChange, arabic = false, style
+}) {
+  const shared = {
+    width: '100%', boxSizing: 'border-box', background: 'transparent',
+    border: 0, borderBottom: '1px solid var(--stm-line-28)', outline: 'none', resize: 'none',
+    fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+    fontSize: 16, color: 'var(--stm-paper)', padding: '10px 0',
+    transition: 'var(--stm-transition-color)'
+  };
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8, ...style }}>
+      {label && <span style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-mono)',
+        fontSize: arabic ? 12 : 10.5, letterSpacing: arabic ? 0 : '0.18em',
+        textTransform: arabic ? 'none' : 'uppercase', color: 'var(--stm-grey-7)'
+      }}>{label}</span>}
+      {multiline
+        ? <textarea className="stm-input" rows={rows} placeholder={placeholder} value={value} onChange={onChange} style={shared} />
+        : <input className="stm-input" placeholder={placeholder} value={value} onChange={onChange} style={shared} />}
+    </div>
+  );
+}

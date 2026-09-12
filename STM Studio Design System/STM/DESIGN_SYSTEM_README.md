@@ -42,12 +42,16 @@ tokens/                     colors, typography, spacing, borders, motion, fonts,
 assets/photos/              4 real studio photographs extracted from the source mockups
 guidelines/                 19 foundation specimen cards (Colors, Type, Spacing, Brand)
 components/
-  core/        Icon, Eyebrow, Button, BrandMark, Rule+Tick, Frame
+  core/        Icon, Eyebrow, Button, BrandMark, Rule+Tick, Frame, Input
   layout/      NavBar, SectionHead, RuleRow, ClientStrip, SpecStrip, Footer
   content/     CreditRow, WorkCard, ServiceRow, UnitColumn, ContactRow
 ui_kits/landing/            full landing-page recreation — desktop EN, desktop AR/RTL,
-                             mobile, and the Direction B daylight alternate, all interactive
+                             mobile, Direction B daylight alternate, Work index, Case
+                             study, Contact and 404, all interactive
 ```
 
 ### Intentional additions
-None — every component here has a direct counterpart in the four source mockups. No primitive (Toast, Tabs, Dialog, etc.) was added beyond what the source actually uses; the source is a single marketing landing page, so the inventory is deliberately small.
+- `components/core/Input.jsx` — a transparent, hairline-underlined text/textarea field. No form field exists in any source mockup; added only so the new Contact page's brief form has an input that matches the brand's square, shadow-free, hairline-separated visual language rather than borrowing a generic one.
+- `ui_kits/landing/WorkIndex.jsx`, `CaseStudy.jsx`, `Contact.jsx`, `NotFound.jsx` — the source is a single landing page with no dedicated Work, Contact or 404 screens. These were built to give the landing page's own links ("See all work," a WorkCard click, "Start a project," a broken URL) a real destination, using only the established component vocabulary — no new visual motifs were introduced.
+
+Everything else has a direct counterpart in the four source mockups; no primitive (Toast, Tabs, Dialog, etc.) was added beyond what the source actually uses.

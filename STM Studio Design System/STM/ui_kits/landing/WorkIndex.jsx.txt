@@ -1,0 +1,40 @@
+const { NavBar, SectionHead, RuleRow, WorkCard, Button, Footer, Eyebrow } = window.STMStudioDesignSystem_5c3910;
+
+function WorkIndex({ lang = 'en', onLang, onOpenCase }) {
+  const C = window.STM_COPY;
+  const [filter, setFilter] = React.useState('All');
+  const roles = ['All', 'Production house', 'Digital unit', 'Studio & photography', 'Full event coverage'];
+  const filtered = filter === 'All' ? C.work : C.work.filter((w) => w.credits.some((c) => c.accent && c.value === filter));
+
+  return (
+    <div style={{ width: 1440, margin: '0 auto', background: 'var(--stm-ink)', color: 'var(--stm-paper)', fontFamily: 'var(--stm-font-body)' }}>
+      <NavBar lang={lang} onLang={onLang} links={[{ label: 'Work' }, { label: 'Services' }, { label: 'The Unit' }, { label: 'Studio' }]} />
+      <div style={{ padding: '96px 100px 0' }}>
+        <RuleRow left="Cairo, Egypt" right="Full portfolio" />
+        <SectionHead style={{ marginTop: 40 }} eyebrow="Work" title="Every credit, in one place." />
+        <div style={{ display: 'flex', gap: 10, marginTop: 40, flexWrap: 'wrap' }}>
+          {roles.map((r) => (
+            <button key={r} onClick={() => setFilter(r)} style={{
+              fontFamily: 'var(--stm-font-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase',
+              padding: '10px 16px', border: '1px solid ' + (filter === r ? 'var(--stm-red)' : 'var(--stm-line-28)'),
+              background: filter === r ? 'var(--stm-red)' : 'transparent', color: filter === r ? '#FFFFFF' : 'var(--stm-paper)',
+              cursor: 'pointer', transition: 'var(--stm-transition-color)'
+            }}>{r}</button>
+          ))}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '40px 32px', marginTop: 44 }}>
+          {filtered.map((w) => (
+            <div key={w.frame} onClick={() => onOpenCase && onOpenCase(w)} style={{ cursor: onOpenCase ? 'pointer' : 'default' }}>
+              <WorkCard href={w.href} frameLabel={w.frame} credits={w.credits} />
+            </div>
+          ))}
+        </div>
+        {filtered.length === 0 && (
+          <p style={{ fontFamily: 'var(--stm-font-mono)', fontSize: 12, letterSpacing: '0.1em', color: 'var(--stm-grey-7)', marginTop: 40 }}>No credits in this category yet.</p>
+        )}
+      </div>
+      <Footer style={{ marginTop: 90 }} />
+    </div>
+  );
+}
+Object.assign(window, { WorkIndex });

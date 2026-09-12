@@ -6,7 +6,7 @@
 <script src="../../_ds_bundle.js"></script>
 <style>body{margin:0;background:var(--stm-ink);color:var(--stm-paper);font-family:var(--stm-font-body)}.lbl{font-family:var(--stm-font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stm-grey-8)}</style></head>
 <body><div id="root"></div><script type="text/babel">
-const { Button, BrandMark, Eyebrow, Icon, Rule, Tick, Frame } = window.STMStudioDesignSystem_5c3910;
+const { Button, BrandMark, Eyebrow, Icon, Rule, Tick, Frame, Input } = window.STMStudioDesignSystem_5c3910;
 function Row({ label, children, gap = 14 }) {
   return <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
     <span className="lbl">{label}</span>
@@ -38,6 +38,9 @@ function Card(){
     <Row label="Frame — empty brief vs. real asset" gap={16}>
       <Frame height={120} style={{ width:300 }} label="Frame 01 · KION" note="still to supply" viewPost />
       <Frame height={120} style={{ width:300 }} src="../../assets/photos/set-podcast.jpg" alt="Podcast set" />
+    </Row>
+    <Row label="Input — intentional addition" gap={20}>
+      <Input label="Project name" placeholder="e.g. KION — summer campaign" style={{ width:280 }} />
     </Row>
   </div>;
 }

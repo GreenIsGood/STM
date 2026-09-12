@@ -16,3 +16,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var filterBar = document.querySelector('[data-work-filters]');
+  if (!filterBar) return;
+
+  var buttons = filterBar.querySelectorAll('[data-filter]');
+  var cards = document.querySelectorAll('[data-work-card]');
+  var empty = document.querySelector('[data-work-empty]');
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      buttons.forEach(function (b) { b.classList.remove('stm-filter--active'); });
+      btn.classList.add('stm-filter--active');
+
+      var role = btn.getAttribute('data-filter');
+      var visible = 0;
+      cards.forEach(function (card) {
+        var show = role === 'all' || card.getAttribute('data-role') === role;
+        card.hidden = !show;
+        if (show) visible++;
+      });
+      if (empty) empty.hidden = visible > 0;
+    });
+  });
+});
