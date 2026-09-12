@@ -1,0 +1,12 @@
+import React from 'react';
+
+export function Eyebrow({ children, size = 'md', color, arabic = false, style }) {
+  const sizes = { md: { fs: 12, ls: '0.22em' }, sm: { fs: 11, ls: '0.28em' }, mobile: { fs: 10.5, ls: '0.2em' } };
+  const s = sizes[size] || sizes.md;
+  if (arabic) {
+    return <span style={{ fontFamily: 'var(--stm-font-arabic)', fontSize: 13, fontWeight: 500, letterSpacing: '0.04em', color: color || 'var(--stm-grey-6)', ...style }}>{children}</span>;
+  }
+  return (
+    <span style={{ fontFamily: 'var(--stm-font-mono)', fontSize: s.fs, letterSpacing: s.ls, textTransform: 'uppercase', color: color || 'var(--stm-grey-6)', ...style }}>{children}</span>
+  );
+}

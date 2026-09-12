@@ -1,0 +1,41 @@
+import React from 'react';
+import { Icon } from './Icon.jsx';
+
+const PADS = { sm: '12px 20px', md: '17px 30px', lg: '19px 34px' };
+const FS = { sm: 13.5, md: 15, lg: 16 };
+const ICON = { sm: 16, md: 18, lg: 19 };
+
+export function Button({
+  children, variant = 'primary', size = 'md', icon, iconAfter,
+  href = '#', fullWidth = false, disabled = false, onClick, style
+}) {
+  const base = {
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    gap: size === 'sm' ? 9 : 10,
+    fontFamily: 'var(--stm-font-body)', fontSize: FS[size],
+    padding: PADS[size], borderRadius: 0, boxSizing: 'border-box',
+    textDecoration: 'none', cursor: disabled ? 'not-allowed' : 'pointer',
+    transition: 'var(--stm-transition-color)',
+    opacity: disabled ? 0.4 : 1,
+    width: fullWidth ? '100%' : undefined,
+    height: fullWidth ? 52 : undefined,
+    padding: fullWidth ? 0 : PADS[size]
+  };
+  const variants = {
+    primary: { background: 'var(--stm-red)', color: 'var(--stm-red-ink)', fontWeight: 600, border: '1px solid var(--stm-red)' },
+    outline: { background: 'transparent', color: 'var(--stm-paper)', fontWeight: 500, border: '1px solid var(--stm-line-28)' },
+    link: { background: 'transparent', color: 'var(--stm-paper)', fontWeight: 500, border: 0, padding: 0, borderBottom: '1px solid var(--stm-red)', paddingBottom: 2 }
+  };
+  const props = {
+    style: { ...base, ...variants[variant], ...style },
+    onClick: disabled ? (e) => e.preventDefault() : onClick,
+    ...(disabled ? {} : { href })
+  };
+  return (
+    <a {...props}>
+      {icon && <Icon name={icon} size={ICON[size]} />}
+      {children}
+      {iconAfter && <Icon name={iconAfter} size={size === 'sm' ? 14 : 16} />}
+    </a>
+  );
+}

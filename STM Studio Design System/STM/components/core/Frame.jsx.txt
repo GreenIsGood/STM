@@ -1,0 +1,56 @@
+import React from 'react';
+import { Icon } from './Icon.jsx';
+
+/* The bracketed media well. Either holds a real image or states, in mono,
+   exactly what asset is still missing — the source never fakes imagery. */
+export function Frame({
+  height = 240, label, note, src, alt = '', brackets = true, mobile = false,
+  badge, viewPost = false, daylight = false, children, style
+}) {
+  const b = mobile ? 14 : 18;
+  const inset = mobile ? 8 : 10;
+  const corner = { content: '""', position: 'absolute', width: b, height: b, borderColor: 'var(--stm-red)', borderStyle: 'solid' };
+  return (
+    <div style={{
+      position: 'relative', height, overflow: 'hidden',
+      background: daylight ? 'var(--stm-day-surface)' : 'var(--stm-ink-deep)',
+      border: daylight ? '1px solid var(--stm-day-line-14)' : '1px solid var(--stm-line-12)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', ...style
+    }}>
+      {src
+        ? <img src={src} alt={alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        : (
+          <div style={{
+            fontFamily: 'var(--stm-font-mono)', fontSize: mobile ? 10 : 11,
+            letterSpacing: mobile ? '0.14em' : '0.16em', textTransform: 'uppercase',
+            color: daylight ? 'var(--stm-day-muted-2)' : 'var(--stm-grey-7)',
+            textAlign: 'center', lineHeight: mobile ? 2 : 1.9, padding: '0 16px'
+          }}>
+            {label}
+            {note && <><br /><span style={{ color: daylight ? 'var(--stm-day-muted-3)' : 'var(--stm-grey-8)' }}>{note}</span></>}
+          </div>
+        )}
+      {brackets && !src && <>
+        <span style={{ ...corner, top: inset, left: inset, borderWidth: '1px 0 0 1px' }} />
+        <span style={{ ...corner, bottom: inset, right: inset, borderWidth: '0 1px 1px 0' }} />
+      </>}
+      {badge && (
+        <div style={{ position: 'absolute', left: 28, bottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--stm-red)' }} />
+          <span style={{ fontFamily: 'var(--stm-font-mono)', fontSize: 11, letterSpacing: '0.2em', color: 'var(--stm-grey-6)' }}>{badge}</span>
+        </div>
+      )}
+      {viewPost && (
+        <div className="stm-viewpost" style={{
+          position: 'absolute', left: mobile ? 12 : 16, bottom: mobile ? 11 : 14,
+          display: 'flex', alignItems: 'center', gap: mobile ? 5 : 6, color: 'var(--stm-grey-8)',
+          transition: 'var(--stm-transition-color)'
+        }}>
+          <span style={{ fontFamily: 'var(--stm-font-mono)', fontSize: mobile ? 9 : 10, letterSpacing: mobile ? '0.14em' : '0.16em' }}>VIEW POST</span>
+          <Icon name="arrowUpRight" size={mobile ? 11 : 13} strokeWidth={mobile ? 2.2 : 2} />
+        </div>
+      )}
+      {children}
+    </div>
+  );
+}

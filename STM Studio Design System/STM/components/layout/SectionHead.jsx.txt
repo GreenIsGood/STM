@@ -1,0 +1,37 @@
+import React from 'react';
+import { Eyebrow } from '../core/Eyebrow.jsx';
+
+export function SectionHead({
+  eyebrow, title, aside, size = 'md', arabic = false, align = 'end', mobile = false, style
+}) {
+  const sizes = {
+    lg: { fs: 78, lh: 0.98, ls: '-0.035em' },
+    md: { fs: 60, lh: 1.02, ls: '-0.03em' },
+    band: { fs: 52, lh: 1.04, ls: '-0.03em' }
+  };
+  let s = sizes[size] || sizes.md;
+  if (mobile) s = { fs: 34, lh: 1.04, ls: '-0.025em' };
+  if (arabic) s = { fs: size === 'lg' ? 68 : 56, lh: size === 'lg' ? 1.28 : 1.3, ls: 0 };
+  const head = (
+    <div>
+      <Eyebrow arabic={arabic} size={mobile ? 'mobile' : 'md'}>{eyebrow}</Eyebrow>
+      <h2 style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-display)',
+        fontSize: s.fs, lineHeight: s.lh, letterSpacing: s.ls,
+        fontWeight: 700, color: 'var(--stm-paper)',
+        margin: mobile ? '14px 0 0 0' : '18px 0 0 0', textWrap: 'pretty'
+      }}>{title}</h2>
+    </div>
+  );
+  if (!aside) return <div style={style}>{head}</div>;
+  return (
+    <div style={{ display: 'flex', alignItems: `flex-${align}`, justifyContent: 'space-between', gap: 60, ...style }}>
+      {head}
+      <p style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+        fontSize: 16, lineHeight: arabic ? 1.9 : 1.6, color: 'var(--stm-grey-5)',
+        maxWidth: 400, margin: '0 0 8px 0'
+      }}>{aside}</p>
+    </div>
+  );
+}

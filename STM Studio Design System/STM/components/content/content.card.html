@@ -1,0 +1,30 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Content" subtitle="WorkCard · CreditRow · ServiceRow · UnitColumn · ContactRow" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--stm-ink);color:var(--stm-paper);font-family:var(--stm-font-body)}.lbl{font-family:var(--stm-font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stm-grey-8)}</style></head>
+<body><div id="root"></div><script type="text/babel">
+const { WorkCard, UnitColumn, ContactRow, Rule, ServiceRow } = window.STMStudioDesignSystem_5c3910;
+function Card(){
+  return <div style={{ transform:'scale(0.486)', transformOrigin:'top left', width:1440, padding:'30px 100px' }}>
+    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,minmax(0,1fr))', gap:'40px 32px' }}>
+      <WorkCard frameLabel="Frame 01 · KION" src="../../assets/photos/set-podcast.jpg" credits={[
+        {label:'Client',value:'KION'},{label:'Agency',value:'Roxi Design Studio'},{label:'STM',value:'Production house',accent:true}]} />
+      <WorkCard frameLabel="Frame 02 · LeadsMart" credits={[
+        {label:'Client',value:'LeadsMart'},{label:'Agency',value:'Cultark'},{label:'STM',value:'Production house',accent:true}]} />
+      <div style={{ display:'flex', flexDirection:'column', gap:40 }}>
+        <UnitColumn title="Production" items={['Director & 1st / 2nd AD','DOP & camera crew','Focus puller','Gaffer & lighting','Digital unit & BTS']} />
+        <ContactRow label="Phone" value="+20 10 9580 2959" href="tel:+201095802959" />
+      </div>
+    </div>
+    <div style={{ marginTop:40 }}>
+      <Rule />
+      <ServiceRow number="03" title="Digital unit & social content">The second camera on set that pays for itself — BTS, vertical cutdowns, stills and social-first edits captured alongside the main shoot, not bolted on afterwards.</ServiceRow>
+      <Rule />
+    </div>
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+</script></body></html>

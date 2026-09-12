@@ -1,0 +1,64 @@
+import React from 'react';
+import { BrandMark } from '../core/BrandMark.jsx';
+import { Button } from '../core/Button.jsx';
+import { Icon } from '../core/Icon.jsx';
+
+export function NavBar({
+  links = [], lang = 'en', onLang, cta = 'Start a project',
+  ctaHref = '#', mobile = false, arabic = false, onMenu, style
+}) {
+  const wrap = {
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    padding: mobile ? '16px 20px' : '26px 100px',
+    borderBottom: '1px solid var(--stm-line-10)', ...style
+  };
+  if (mobile) {
+    return (
+      <div style={wrap}>
+        <BrandMark size={36} lockup="short" arabic={arabic} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <LangSwitch lang={lang} onLang={onLang} size={11} />
+          <button onClick={onMenu} aria-label="Menu" style={{
+            width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: 'none', border: 0, padding: 0, cursor: 'pointer'
+          }}><Icon name="menu" size={22} color="var(--stm-paper)" /></button>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div style={wrap}>
+      <BrandMark size={42} lockup="full" arabic={arabic} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 34 }}>
+        {links.map((l) => (
+          <a key={l.label} href={l.href || '#'} className="stm-navlink" style={{
+            fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+            fontSize: arabic ? 15 : 14, color: 'var(--stm-grey-1)',
+            letterSpacing: arabic ? 0 : '0.01em', textDecoration: 'none',
+            transition: 'var(--stm-transition-color)'
+          }}>{l.label}</a>
+        ))}
+        <LangSwitch lang={lang} onLang={onLang} size={12} style={{ paddingInlineStart: 6 }} />
+        <Button variant="primary" size="sm" icon="whatsapp" href={ctaHref}>{cta}</Button>
+      </div>
+    </div>
+  );
+}
+
+function LangSwitch({ lang, onLang, size = 12, style }) {
+  const item = (code, label) => (
+    <span onClick={() => onLang && onLang(code)} style={{
+      fontFamily: 'var(--stm-font-mono)', fontSize: size, cursor: onLang ? 'pointer' : 'default',
+      color: lang === code ? 'var(--stm-paper)' : 'var(--stm-grey-7)',
+      borderBottom: lang === code ? '1px solid var(--stm-red)' : '1px solid transparent',
+      paddingBottom: 2, transition: 'var(--stm-transition-color)'
+    }}>{label}</span>
+  );
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 8, ...style }}>
+      {item('en', 'EN')}
+      <span style={{ fontFamily: 'var(--stm-font-mono)', fontSize: size, color: 'var(--stm-grey-7)' }}>/</span>
+      {item('ar', 'ع')}
+    </div>
+  );
+}

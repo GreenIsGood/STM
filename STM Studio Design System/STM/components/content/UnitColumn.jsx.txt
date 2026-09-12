@@ -1,0 +1,21 @@
+import React from 'react';
+import { Tick } from '../core/Rule.jsx';
+
+export function UnitColumn({ title, items = [], arabic = false, daylight = false, style }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, ...style }}>
+      <Tick daylight={daylight} />
+      <h4 style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-display)',
+        fontSize: arabic ? 18 : 19, fontWeight: arabic ? 700 : 600,
+        letterSpacing: arabic ? 0 : '0.01em', color: 'var(--stm-paper)', margin: 0
+      }}>{title}</h4>
+      <div style={{
+        fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-body)',
+        fontSize: arabic ? 15 : 14.5, lineHeight: 2.1, color: 'var(--stm-grey-4)'
+      }}>
+        {items.map((i, n) => <React.Fragment key={i}>{n > 0 && <br />}{i}</React.Fragment>)}
+      </div>
+    </div>
+  );
+}

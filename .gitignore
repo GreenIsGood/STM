@@ -1,0 +1,6 @@
+# Unrelated personal files living alongside this project
+/WhatsApp Unknown*/
+/WhatsApp Unknown*.zip
+
+# Raw handoff zip — the extracted "STM Studio Design System/" folder is tracked instead
+/STM Studio Design System.zip

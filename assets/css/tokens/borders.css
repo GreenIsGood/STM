@@ -1,0 +1,20 @@
+:root{
+  /* STM is a square system. The ONLY curve in the brand is the logo disc. */
+  --stm-radius:0;
+  --stm-radius-disc:50%;
+
+  --stm-hairline:1px;
+  --stm-tick:2px;            /* accent tick above unit columns, 34px wide */
+  --stm-tick-w:34px;
+  --stm-bracket:18px;        /* placeholder corner bracket, desktop */
+  --stm-bracket-mobile:14px;
+
+  --stm-border-rule:1px solid var(--stm-line-14);
+  --stm-border-cell:1px solid var(--stm-line-10);
+  --stm-border-control:1px solid var(--stm-line-28);
+  --stm-border-inset:1px solid var(--stm-line-12);
+
+  /* No elevation system: STM uses zero box-shadows.
+     Separation is done with hairlines and ground-colour shifts. */
+  --stm-shadow-none:none;
+}

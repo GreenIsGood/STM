@@ -1,0 +1,26 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Layout" subtitle="NavBar · SectionHead · RuleRow · ClientStrip · SpecStrip · Footer" -->
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--stm-ink);color:var(--stm-paper);font-family:var(--stm-font-body)}.lbl{font-family:var(--stm-font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stm-grey-8)}</style></head>
+<body><div id="root"></div><script type="text/babel">
+const { NavBar, RuleRow, SectionHead, ClientStrip, SpecStrip, Footer } = window.STMStudioDesignSystem_5c3910;
+function Card(){
+  const [lang, setLang] = React.useState('en');
+  return <div style={{ transform:'scale(0.486)', transformOrigin:'top left', width:1440 }}>
+    <NavBar links={[{label:'Work'},{label:'Services'},{label:'The Unit'},{label:'Studio'}]} lang={lang} onLang={setLang} />
+    <div style={{ padding:'40px 100px 0' }}>
+      <RuleRow left="Cairo, Egypt" right="Est. Full-service production" />
+      <SectionHead style={{ marginTop:40 }} eyebrow="01 — Selected work" title="On the credits."
+        aside="Every job below carries our name in the credits — as production house, digital unit or studio." />
+      <ClientStrip style={{ marginTop:44 }} clients={['KION','LeadsMart','El Wady','Avanti','Watson Says','Vaseline','Egypt Int’l Airshow']}
+        note="[ set as wordmarks — replace with client logo files when cleared ]" />
+      <SpecStrip style={{ marginTop:36 }} specs={[{value:'5.5m',label:'Width'},{value:'4m',label:'Depth'},{value:'Curve',label:'Wall'},{value:'Skylight',label:'Natural light'},{value:'Fitting',label:'Private changing'},{value:'Makeup',label:'Area'}]} />
+    </div>
+    <Footer style={{ marginTop:40 }} />
+  </div>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Card />);
+</script></body></html>

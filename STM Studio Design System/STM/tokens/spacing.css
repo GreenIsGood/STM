@@ -1,0 +1,35 @@
+:root{
+  /* raw step scale, taken from the measured source values */
+  --stm-s-1:4px;   --stm-s-2:7px;   --stm-s-3:9px;   --stm-s-4:11px;
+  --stm-s-5:14px;  --stm-s-6:18px;  --stm-s-7:22px;  --stm-s-8:26px;
+  --stm-s-9:34px;  --stm-s-10:40px; --stm-s-11:48px; --stm-s-12:56px;
+  --stm-s-13:64px; --stm-s-14:80px; --stm-s-15:90px; --stm-s-16:110px;
+  --stm-s-17:120px;
+
+  /* page gutters */
+  --stm-gutter:100px;        /* Direction A desktop */
+  --stm-gutter-day:90px;     /* Direction B desktop */
+  --stm-gutter-mobile:20px;
+
+  /* rhythm */
+  --stm-nav-pad-y:26px;
+  --stm-section-gap:110px;   /* top padding between major sections */
+  --stm-section-gap-lg:120px;
+  --stm-head-gap:18px;       /* eyebrow → h2 */
+  --stm-grid-gap-x:32px;
+  --stm-grid-gap-y:40px;
+  --stm-row-pad:34px;        /* service row vertical padding */
+
+  /* controls */
+  --stm-btn-pad-sm:12px 20px; /* @kind spacing */
+  --stm-btn-pad-md:17px 30px; /* @kind spacing */
+  --stm-btn-pad-lg:19px 34px; /* @kind spacing */
+  --stm-btn-h-mobile:52px;
+  --stm-tap-min:44px;
+
+  /* canvas widths */
+  --stm-w-desktop:1440px;
+  --stm-w-mobile:390px;
+  --stm-measure:560px;       /* hero lede max-width */
+  --stm-measure-sm:400px;    /* section aside max-width */
+}

@@ -1,0 +1,8 @@
+/* Hover / focus behaviour. STM transitions colour only — nothing moves. */
+a{color:var(--stm-paper);text-decoration:none;transition:var(--stm-transition-color)}
+a:hover{color:var(--stm-red)}
+.stm-navlink:hover,.stm-contact:hover{color:var(--stm-red)}
+.stm-workcard:hover .stm-viewpost{color:var(--stm-red)}
+.stm-daylight a{color:var(--stm-day-ink)}
+.stm-daylight a:hover{color:var(--stm-gold-ink)}
+*:focus-visible{outline:1px solid var(--stm-red);outline-offset:2px}

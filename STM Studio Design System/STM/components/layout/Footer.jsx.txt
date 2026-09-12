@@ -1,0 +1,23 @@
+import React from 'react';
+
+export function Footer({
+  left = '© 2026 STM STUDIO — CAIRO, EGYPT',
+  right = 'WE TURN IDEAS INTO REALITY',
+  mobile = false, arabic = false, style
+}) {
+  const t = {
+    fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-mono)',
+    fontSize: arabic ? 12 : 11, letterSpacing: arabic ? 0 : '0.14em', color: 'var(--stm-grey-8)'
+  };
+  return (
+    <div style={{
+      padding: mobile ? '22px 20px 34px 20px' : '30px 100px 44px 100px',
+      borderTop: '1px solid var(--stm-line-10)',
+      display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: mobile ? 8 : 0,
+      alignItems: mobile ? 'flex-start' : 'center', justifyContent: 'space-between', ...style
+    }}>
+      <span style={t}>{left}</span>
+      <span style={t}>{right}</span>
+    </div>
+  );
+}

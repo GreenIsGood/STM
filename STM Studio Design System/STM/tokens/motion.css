@@ -1,0 +1,9 @@
+:root{
+  /* Restrained. Colour-only transitions; nothing moves, scales or bounces. */
+  --stm-ease:cubic-bezier(0.22,0.61,0.36,1); /* @kind other */
+  --stm-dur-fast:120ms; /* @kind other */
+  --stm-dur:180ms; /* @kind other */
+  --stm-transition-color:color var(--stm-dur) var(--stm-ease),
+                         background-color var(--stm-dur) var(--stm-ease),
+                         border-color var(--stm-dur) var(--stm-ease); /* @kind other */
+}

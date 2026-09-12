@@ -1,0 +1,99 @@
+const { NavBar, SectionHead, ClientStrip, Footer, Button, Frame, Rule, Eyebrow,
+        WorkCard, ServiceRow, UnitColumn, ContactRow } = window.STMStudioDesignSystem_5c3910;
+
+function LandingMobile({ lang = 'en', onLang }) {
+  const [menu, setMenu] = React.useState(false);
+  const C = window.STM_COPY;
+  const P = '../../assets/photos/';
+  const G = { padding: '0 20px' };
+
+  return (
+    <div style={{ width: 390, margin: '0 auto', background: 'var(--stm-ink)', color: 'var(--stm-paper)', fontFamily: 'var(--stm-font-body)', position: 'relative' }}>
+      <NavBar mobile lang={lang} onLang={onLang} onMenu={() => setMenu(!menu)} />
+      {menu && (
+        <div style={{ borderBottom: '1px solid var(--stm-line-10)', padding: '6px 20px 14px' }}>
+          {['Work','Services','The Unit','Studio'].map((l) => (
+            <a key={l} href={'#' + l.toLowerCase().replace(/\s/g,'')} onClick={() => setMenu(false)}
+              style={{ display: 'flex', alignItems: 'center', minHeight: 44, fontSize: 16, color: 'var(--stm-grey-1)' }}>{l}</a>
+          ))}
+        </div>
+      )}
+
+      <div style={{ ...G, paddingTop: 40 }}>
+        <Eyebrow size="mobile">Cairo, Egypt · Production house</Eyebrow>
+        <h1 style={{ fontFamily: 'var(--stm-font-display)', fontSize: 46, lineHeight: 0.98, fontWeight: 700, letterSpacing: '-0.03em', margin: '20px 0 0 0' }}>
+          We turn ideas into <span style={{ color: 'var(--stm-red)' }}>reality.</span>
+        </h1>
+        <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--stm-grey-2)', margin: '22px 0 0 0' }}>
+          A full-service production house in Cairo. We build and run the whole unit — direction, camera, art, casting, post — for commercials, brand films and product work.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 11, marginTop: 26 }}>
+          <Button fullWidth variant="primary" icon="whatsapp" href={C.wa}>Start a project on WhatsApp</Button>
+          <Button fullWidth variant="outline" href="#work">See the work</Button>
+        </div>
+        <Frame mobile style={{ marginTop: 28 }} height={220} label="Showreel — 16:9" note="supply video or link" />
+      </div>
+
+      <div style={{ ...G, paddingTop: 36 }}>
+        <Eyebrow size="mobile">Trusted by</Eyebrow>
+        <ClientStrip mobile style={{ marginTop: 14 }} clients={C.clients.slice(0, 6)} />
+      </div>
+
+      <div id="work" style={{ ...G, paddingTop: 52 }}>
+        <SectionHead mobile eyebrow="01 — Selected work" title="On the credits." />
+        <p style={{ fontSize: 15, lineHeight: 1.65, color: 'var(--stm-grey-5)', margin: '10px 0 28px 0' }}>
+          Every job below carries our name in the credits. Tap any card to open the original post.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 30 }}>
+          {C.work.slice(0, 3).map((w) => (
+            <WorkCard key={w.frame} mobile href={w.href} frameLabel={w.frame} credits={w.credits} />
+          ))}
+        </div>
+      </div>
+
+      <div id="services" style={{ ...G, paddingTop: 52 }}>
+        <SectionHead mobile eyebrow="02 — What we do" title="Five things, done properly." />
+        <div style={{ marginTop: 20 }}>
+          <Rule />
+          {C.services.map((s) => (
+            <React.Fragment key={s.n}>
+              <ServiceRow mobile number={s.n} title={s.t}>{s.d}</ServiceRow>
+              <Rule />
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      <div id="theunit" style={{ marginTop: 52, background: 'var(--stm-ink-band)', padding: '44px 20px' }}>
+        <SectionHead mobile eyebrow="03 — How we work" title="One contact. The whole unit." />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 30, marginTop: 28 }}>
+          {C.unit.map((u) => <UnitColumn key={u.t} title={u.t} items={u.items} />)}
+        </div>
+      </div>
+
+      <div id="studio" style={{ ...G, paddingTop: 52 }}>
+        <SectionHead mobile eyebrow="04 — The space" title="We shoot in our own studio." />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 24 }}>
+          <Frame mobile height={210} src={P + 'studio-cyclorama.jpg'} alt="Skylight cyclorama" />
+          <Frame mobile height={150} src={P + 'set-podcast.jpg'} alt="Podcast set" />
+        </div>
+      </div>
+
+      <div style={{ ...G, paddingTop: 52, paddingBottom: 8 }}>
+        <SectionHead mobile eyebrow="05 — Next step" title="Tell us what you’re shooting." />
+        <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--stm-grey-3)', margin: '14px 0 22px 0' }}>
+          Send the brief, the deadline and the budget range. You’ll get a producer, a treatment direction and a quote.
+        </p>
+        <Button fullWidth variant="primary" icon="whatsapp" href={C.wa}>WhatsApp 010 9580 2959</Button>
+        <div style={{ marginTop: 22 }}>
+          <ContactRow label="Email" value="stmstudio3@gmail.com" href="mailto:stmstudio3@gmail.com" />
+          <ContactRow label="Studio" value="[ STUDIO ADDRESS ]" placeholder />
+          <Rule />
+        </div>
+      </div>
+
+      <Footer mobile style={{ marginTop: 34 }} />
+    </div>
+  );
+}
+Object.assign(window, { LandingMobile });

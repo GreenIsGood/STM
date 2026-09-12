@@ -1,0 +1,39 @@
+import React from 'react';
+
+/* The only mark supplied with the source: the lowercase italic "stm"
+   set in Archivo Bold inside a paper disc. There is no logo file. */
+export function BrandMark({ size = 42, inverted = false, lockup = 'full', arabic = false, style }) {
+  const disc = (
+    <div style={{
+      width: size, height: size, borderRadius: 'var(--stm-radius-disc)', flexShrink: 0,
+      background: inverted ? 'var(--stm-ink)' : 'var(--stm-paper)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center'
+    }}>
+      <span style={{
+        fontFamily: 'var(--stm-font-display)', fontSize: Math.round(size * 0.405),
+        fontWeight: 700, fontStyle: 'italic', letterSpacing: '-0.04em',
+        color: inverted ? 'var(--stm-paper)' : 'var(--stm-ink)'
+      }}>stm</span>
+    </div>
+  );
+  if (lockup === 'mark') return <div style={style}>{disc}</div>;
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, ...style }}>
+      {disc}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: arabic ? 3 : 2 }}>
+        <span style={{
+          fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-display)',
+          fontSize: arabic ? 15 : 14, fontWeight: arabic ? 700 : 600,
+          letterSpacing: arabic ? 0 : '0.02em', color: 'var(--stm-paper)'
+        }}>{arabic ? 'إس تي إم ستوديو' : 'STM STUDIO'}</span>
+        {lockup === 'full' && (
+          <span style={{
+            fontFamily: arabic ? 'var(--stm-font-arabic)' : 'var(--stm-font-mono)',
+            fontSize: arabic ? 11 : 9.5, letterSpacing: arabic ? 0 : '0.2em',
+            color: 'var(--stm-grey-7)'
+          }}>{arabic ? 'شركة إنتاج' : 'PRODUCTION HOUSE'}</span>
+        )}
+      </div>
+    </div>
+  );
+}

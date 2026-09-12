@@ -1,0 +1,58 @@
+:root{
+  /* ── Night (Direction A — primary, shipped) ───────────── */
+  --stm-ink:#1F1E1C;            /* page ground */
+  --stm-ink-deep:#171614;       /* placeholder / inset panel */
+  --stm-ink-band:#161513;       /* full-width contrast band */
+  --stm-paper:#F2F0EC;          /* primary text on night */
+  --stm-paper-2:#E6E3DE;        /* credit values */
+  --stm-grey-1:#C9C5BF;         /* nav links */
+  --stm-grey-2:#B4B0AA;         /* hero lede */
+  --stm-grey-3:#A5A09A;         /* body copy */
+  --stm-grey-4:#928D87;         /* client wordmarks, list copy */
+  --stm-grey-5:#918C86;         /* secondary body */
+  --stm-grey-6:#8E8A84;         /* eyebrow */
+  --stm-grey-7:#6E6A65;         /* mono meta, muted */
+  --stm-grey-8:#57534E;         /* footnote, footer, disabled */
+
+  /* ── Accent ───────────────────────────────────────────── */
+  --stm-red:#D52027;            /* the single brand accent */
+  --stm-red-ink:#FFFFFF;        /* text on accent */
+
+  /* ── Daylight (Direction B — editorial alternate) ──────── */
+  --stm-day-paper:#EFEDE7;
+  --stm-day-surface:#E3E0D8;
+  --stm-day-ink:#1F1E1C;
+  --stm-day-body:#4A4640;
+  --stm-day-muted:#8A857D;
+  --stm-day-muted-2:#948F86;
+  --stm-day-muted-3:#B0ABA1;
+  --stm-gold:#E7CA4A;           /* Direction B accent */
+  --stm-gold-ink:#8A7420;       /* gold at text contrast */
+
+  /* ── Hairlines (paper over night) ─────────────────────── */
+  --stm-line-10:rgba(242,240,236,0.10);
+  --stm-line-12:rgba(242,240,236,0.12);
+  --stm-line-14:rgba(242,240,236,0.14);
+  --stm-line-16:rgba(242,240,236,0.16);
+  --stm-line-24:rgba(242,240,236,0.24);
+  --stm-line-28:rgba(242,240,236,0.28);
+  /* ── Hairlines (ink over daylight) ────────────────────── */
+  --stm-day-line-14:rgba(31,30,28,0.14);
+  --stm-day-line-18:rgba(31,30,28,0.18);
+
+  /* ── Semantic aliases ─────────────────────────────────── */
+  --surface-page:var(--stm-ink);
+  --surface-inset:var(--stm-ink-deep);
+  --surface-band:var(--stm-ink-band);
+  --text-strong:var(--stm-paper);
+  --text-body:var(--stm-grey-3);
+  --text-lede:var(--stm-grey-2);
+  --text-muted:var(--stm-grey-6);
+  --text-meta:var(--stm-grey-7);
+  --text-faint:var(--stm-grey-8);
+  --text-accent:var(--stm-red);
+  --border-hairline:var(--stm-line-12);
+  --border-rule:var(--stm-line-14);
+  --border-control:var(--stm-line-28);
+  --link-hover:var(--stm-red);
+}

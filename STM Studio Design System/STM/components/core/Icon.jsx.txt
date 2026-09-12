@@ -1,0 +1,22 @@
+import React from 'react';
+
+/* Exact path data lifted from the STM Studio landing-page source.
+   Only these four glyphs appear anywhere in the supplied designs. */
+const PATHS = {
+  whatsapp: { w: 1.8, d: ['M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z'] },
+  arrowRight: { w: 1.8, d: ['M5 12h14', 'm13 6 6 6-6 6'] },
+  arrowUpRight: { w: 2, d: ['M7 17 17 7', 'M9 7h8v8'] },
+  menu: { w: 1.6, d: ['M4 7h16', 'M4 12h16', 'M4 17h16'] }
+};
+
+export function Icon({ name, size = 16, strokeWidth, color = 'currentColor', style }) {
+  const g = PATHS[name];
+  if (!g) return null;
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color}
+      strokeWidth={strokeWidth ?? g.w} strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0, ...style }} aria-hidden="true">
+      {g.d.map((d, i) => <path key={i} d={d} />)}
+    </svg>
+  );
+}
