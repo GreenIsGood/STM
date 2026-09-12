@@ -164,7 +164,7 @@ button { font: inherit; }
   font-family: var(--stm-font-arabic); font-size: var(--stm-t-hero-ar); line-height: var(--stm-lh-hero-ar);
   letter-spacing: 0; max-width: 1150px; margin-top: 36px;
 }
-.stm-hero__title .stm-accent { color: var(--stm-red); }
+.stm-accent { color: var(--stm-red); }
 
 @media (max-width: 760px) {
   .stm-hero { padding-top: 40px; }
@@ -382,6 +382,23 @@ button { font: inherit; }
   .stm-case-gallery .stm-frame { height: 200px; }
   .stm-case-next { margin-top: 52px; padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
   .stm-case-next__link { font-size: 19px; }
+}
+
+/* ── 404 ──────────────────────────────────────────────── */
+.stm-404 {
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px; text-align: center; padding: 40px 20px;
+}
+.stm-404__title {
+  font-family: var(--stm-font-display); font-size: 72px; line-height: 0.98; font-weight: 700;
+  letter-spacing: -0.035em; margin: 0; max-width: 900px;
+}
+[dir="rtl"] .stm-404__title { font-family: var(--stm-font-arabic); font-size: 52px; line-height: 1.2; letter-spacing: 0; }
+.stm-404__lede { font-size: 17px; color: var(--stm-grey-3); margin: 0; }
+[dir="rtl"] .stm-404__lede { font-family: var(--stm-font-arabic); }
+@media (max-width: 760px) {
+  .stm-404__title { font-size: 38px; }
+  [dir="rtl"] .stm-404__title { font-size: 32px; }
 }
 
 /* ── Footer ───────────────────────────────────────────── */
