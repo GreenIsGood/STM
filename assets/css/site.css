@@ -117,6 +117,7 @@ button { font: inherit; }
 .stm-btn--sm { font-size: 13.5px; padding: var(--stm-btn-pad-sm); gap: 9px; }
 .stm-btn--lg { font-size: 16px; padding: var(--stm-btn-pad-lg); }
 .stm-btn--primary { background: var(--stm-red); color: var(--stm-red-ink); font-weight: 600; border: 1px solid var(--stm-red); }
+.stm-btn--primary:hover { color: #000000; }
 .stm-btn--outline { background: transparent; color: var(--stm-paper); font-weight: 500; border: 1px solid var(--stm-line-28); }
 .stm-btn--link { background: transparent; color: var(--stm-paper); font-weight: 500; border: 0; padding: 0; border-bottom: 1px solid var(--stm-red); padding-bottom: 2px; }
 .stm-btn--full { width: 100%; height: var(--stm-btn-h-mobile); padding: 0; }
